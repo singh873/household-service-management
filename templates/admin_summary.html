@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Summary</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin_summary.css') }}"
+    />
+  </head>
+  <body>
+    <div class="nav-left">
+      <a href="{{ url_for('admin_dashboard') }}">Home</a>
+      <a href="{{ url_for('search') }}">Search</a>
+      <a href="{{ url_for('generate_rating_graph') }}">Summary</a>
+      <a href="{{ url_for('login') }}">Logout</a>
+    </div>
+    <h1>Service Requests Summary</h1>
+    <img
+      src="{{ url_for('static', filename=request_image) }}"
+      alt="Service Requests Pie Chart"
+    />
+
+    <h1>Service Rating Summary</h1>
+    <img
+      src="{{ url_for('static', filename=rating_image) }}"
+      alt="Service Rating Bar Chart"
+    />
+  </body>
+</html>

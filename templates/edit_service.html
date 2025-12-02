@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Service</title>
+    <link rel="stylesheet" href="/static/edit_service.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Edit Service</h2>
+      <form
+        action="{{url_for('edit_service',service_id=service.Service_Id)}}"
+        method="POST"
+      >
+        <label for="service_name">Service Name:</label>
+        <input
+          type="text"
+          id="service_name"
+          name="service_name"
+          value="{{ service.Name_of_service }}"
+          required
+        />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required>
+{{ service.Description }}</textarea
+        >
+
+        <label for="base_price">Base Price:</label>
+        <input
+          type="number"
+          id="base_price"
+          name="base_price"
+          value="{{ service.Price }}"
+          min="0"
+          required
+        />
+
+        <div class="button-container">
+          <button type="submit" class="btn save">Save</button>
+          <button
+            type="button"
+            class="btn cancel"
+            onclick="window.location.href='/admin_dashboard'"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

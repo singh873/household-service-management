@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Service Requests</title>
+    <link rel="stylesheet" href="/static/professional_dashboard_search.css" />
+    <link rel="stylesheet" href="/static/professional_dashboard.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="welcome"></div>
+      <nav>
+        <a href="{{url_for('professional_dashboard')}}">Home</a>
+        <a
+          href="{{url_for('professional_dashboard_search',professional_id=user.User_Id)}}"
+          >Search</a
+        >
+        <a
+          href="{{url_for('professional_dashboard_summary',professional_id=user.User_Id)}}"
+          >Summary</a
+        >
+        <a href="{{url_for('login')}}">Logout</a>
+      </nav>
+    </header>
+    <h1>Search Service Requests</h1>
+    <form method="POST">
+      <label for="search_criteria">Search By:</label>
+      <select id="search_criteria" name="search_criteria" required>
+        <option value="service_request_id">Service Request Id</option>
+        <option value="customer_id">Customer ID</option>
+        <option value="date">Date (YYYY-MM-DD)</option>
+        <option value="status">Status</option>
+      </select>
+      <br /><br />
+      <label for="query">Enter Query:</label>
+      <input type="text" id="query" name="query" required />
+      <br /><br />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Error Messages -->
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %}
+
+    <!-- Display Results -->
+    {% if results %}
+    <h2>Search Results:</h2>
+    <ul>
+      {% for request in results %}
+      <li>
+        <strong>Service Request ID:</strong> {{ request.Service_Request_Id }}<br />
+        <strong>Customer ID:</strong> {{ request.Customer_id }}<br />
+        <strong>Status:</strong> {{ request.Status }}<br />
+        <strong>Requested Date:</strong> {{ request.Requested_date }}<br />
+        <strong>Rating:</strong> {{ request.Rating }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>

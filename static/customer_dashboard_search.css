@@ -1,0 +1,91 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navbar nav a:hover {
+  color: #d4d4d4;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #007bff;
+  margin: 20px 0;
+}
+
+/* Form */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Results */
+ul {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+p {
+  text-align: center;
+  color: #777;
+}

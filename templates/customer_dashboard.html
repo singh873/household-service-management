@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/static/customer_dashboard.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="welcome">Welcome, {{user.Full_name}}</div>
+      <nav>
+        <a href="{{url_for('customer_edit_profile',user_id=user.User_Id)}}"
+          >Edit Profile</a
+        >
+        <a href="{{url_for('customer_dashboard')}}">Home</a>
+        <a href="{{url_for('customer_dashboard_search')}}">Search</a>
+        <a
+          href="{{url_for('generate_service_name_pie_chart',customer_id=user.User_Id)}}"
+          >Summary</a
+        >
+        <a href="{{url_for('login')}}">Logout</a>
+      </nav>
+    </header>
+
+    <section class="services">
+      <h2>Looking For?</h2>
+      <div class="service-options">
+        {% for service in services %}
+        <button class="service-button">
+          <a
+            href="{{url_for('Available_services',service_name=service.Name_of_service)}}"
+            >{{ service.Name_of_service }}</a
+          >
+        </button>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="services-list">
+      <h2>Services</h2>
+      <table>
+        <h2>Your Service Requests history</h2>
+        <tr>
+          <th>Request ID</th>
+          <th>Service</th>
+          <th>Professional</th>
+          <th>Status</th>
+          <th>Requested Date</th>
+          <th>Rating</th>
+          <th>Action</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+          <td>{{ request.Service_Request_Id }}</td>
+          <td>{{ request.service.Name_of_service }}</td>
+          <td>{{ request.professional.Full_name}}</td>
+          <td>{{ request.Status }}</td>
+          <td>{{ request.Requested_date }}</td>
+          <td>{{request.Rating}}</td>
+          {% if request.Status == 'Accepted' %}
+          <td>
+            <a
+              href=" {{url_for('close_request',request_id=request.Service_Request_Id)}}"
+              >Close</a
+            >
+          </td>
+
+          {% else %}
+          <td>-</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1,
+h2 {
+  color: #444;
+}
+
+/* Navbar */
+nav {
+  display: flex; /* Enable flexbox */
+  justify-content: space-between; /* Space between left and right sections */
+  background-color: #0056b3; /* Dark Blue */
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+}
+
+.nav-left a,
+.nav-right a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+}
+
+/* Section Titles */
+h2 {
+  margin-top: 30px;
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+}
+
+h2.services {
+  color: #0073e6; /* Blue */
+  border-color: #0073e6;
+}
+
+h2.professionals {
+  color: #28a745; /* Green */
+  border-color: #28a745;
+}
+
+h2.requests {
+  color: #ffc107; /* Yellow */
+  border-color: #ffc107;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Services Table */
+.services-table th {
+  background-color: #0073e6; /* Blue */
+  color: #fff;
+}
+
+.services-table tr:nth-child(even) {
+  background-color: #e7f3ff; /* Light Blue */
+}
+
+/* Professionals Table */
+.professionals-table th {
+  background-color: #28a745; /* Green */
+  color: #fff;
+}
+
+.professionals-table tr:nth-child(even) {
+  background-color: #e9f7ef; /* Light Green */
+}
+
+/* Requests Table */
+.requests-table th {
+  background-color: #ffc107; /* Yellow */
+  color: #fff;
+}
+
+.requests-table tr:nth-child(even) {
+  background-color: #fffbe6; /* Light Yellow */
+}
+
+/* Action Links */
+table a {
+  color: #0056b3;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+a.button,
+.button {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Additional Utility Classes */
+.hidden {
+  display: none;
+}

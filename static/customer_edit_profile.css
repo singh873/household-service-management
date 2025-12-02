@@ -1,0 +1,89 @@
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form Container Styling */
+.form-container {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Labels and Inputs */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Buttons Styling */
+.button-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.save {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+button.save:hover {
+  background-color: #0056b3;
+}
+
+button.cancel {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+button.cancel:hover {
+  background-color: #cc0000;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+}

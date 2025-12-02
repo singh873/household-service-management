@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Professionals</title>
+    <link rel="stylesheet" href="/static/customer_dashboard_search.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="welcome"></div>
+      <nav>
+        <a href="{{url_for('customer_dashboard')}}">Home</a>
+        <a href="{{url_for('customer_dashboard_search')}}">Search</a>
+        <a href="{{url_for('login')}}">Logout</a>
+      </nav>
+    </header>
+    <h1>Search Professionals</h1>
+    <form method="POST">
+      <label for="search_criteria">Search By:</label>
+      <select id="search_criteria" name="search_criteria">
+        <option value="name">Name</option>
+        <option value="address">Address</option>
+        <option value="pincode">Pincode</option>
+      </select>
+      <br /><br />
+      <label for="query">Enter Query:</label>
+      <input type="text" id="query" name="query" required />
+      <br /><br />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Results -->
+    {% if results %}
+    <h2>Search Results:</h2>
+    <ul>
+      {% for professional in results %}
+      <li>
+        <strong>Name:</strong> {{ professional.Full_name }}<br />
+        <strong>Address:</strong> {{ professional.Address }}<br />
+        <strong>Pincode:</strong> {{ professional.Pin_code }}<br />
+        <strong>Service:</strong> {{ professional.service.Name_of_service }}<br />
+        <strong>Rating:</strong> {{ professional.Rating }}<br />
+        <strong>Price:</strong> {{ professional.service.Price }}<br />
+      </li>
+      {% endfor %}
+    </ul>
+    {% elif query %}
+    <p>No results found for "{{ query }}"</p>
+    {% endif %}
+  </body>
+</html>

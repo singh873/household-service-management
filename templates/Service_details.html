@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Details</title>
+    <link rel="stylesheet" href="/static/service_details.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Card Layout -->
+      <div class="card">
+        <div class="card-header">Service Details</div>
+        <div class="card-body">
+          <div>
+            <span class="label">Service ID:</span>
+            <span class="value">{{service.Service_Id}}</span>
+          </div>
+          <div>
+            <span class="label">Name of Service:</span>
+            <span class="value">{{service.Name_of_service}}</span>
+          </div>
+          <div>
+            <span class="label">Description:</span>
+            <span class="value">{{service.Description}}</span>
+          </div>
+          <div class="price">Price: {{service.Price}}</div>
+        </div>
+      </div>
+
+      <!-- Table Layout -->
+      <h2>Service History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service Request Id</th>
+            <th>Customer Id</th>
+            <th>Professonal Id</th>
+            <th>Requested Date</th>
+            <th>Status</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for request in Service_Request %}
+          <tr>
+            <td>{{request.Service_Request_Id}}</td>
+            <td>{{request.customer.User_Id}}</td>
+            <td>{{request.professional.User_Id}}</td>
+            <td>{{request.Requested_date}}</td>
+            <td>{{request.Status}}</td>
+            <td>{{request.customer.Rating}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

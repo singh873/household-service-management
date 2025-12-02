@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.page-title {
+  text-align: center;
+  color: #444;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Home Button Styles */
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.home-button {
+  background-color: #0078d7;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+.home-button:active {
+  transform: scale(0.95);
+  background-color: #004494;
+}
+
+/* Table Styles */
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.services-table th,
+.services-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.services-table th {
+  background-color: #0078d7;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.services-table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.services-table tr:hover {
+  background-color: #f1f9ff;
+  cursor: pointer;
+}
+
+.services-table td {
+  color: #555;
+}
+
+.services-table td:nth-child(7) {
+  font-weight: bold;
+  color: #0078d7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-table {
+    font-size: 14px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .home-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+.navbar {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar .welcome {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #d4d4d4;
+}

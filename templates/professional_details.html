@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Details</title>
+    <link rel="stylesheet" href="/static/professional_details.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Card Layout -->
+      <div class="card">
+        <div class="card-header">Professional Details</div>
+        <div class="card-body">
+          <div>
+            <span class="label">Service ID:</span>
+            <span class="value">{{user.User_Id}}</span>
+          </div>
+          <div>
+            <span class="label">Name:</span>
+            <span class="value">{{user.Full_name}}</span>
+          </div>
+          <div>
+            <span class="label">Pincode:</span>
+            <span class="value">{{user.Pin_code}}</span>
+          </div>
+          <div>
+            <span class="label">Email:</span>
+            <span class="value">{{user.Email}}</span>
+          <div class="price">Price: {{user.service.Price}}</div>
+        </div>
+      </div>
+
+      <!-- Table Layout -->
+      <h2>Service History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service Request Id</th>
+            <th>Customer Id</th>
+            <th>Requested Date</th>
+            <th>Status</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for request in service_requests %}
+          <tr>
+            <td>{{request.Service_Request_Id}}</td>
+            <td>{{request.customer.User_Id}}</td>
+            <td>{{request.Requested_date}}</td>
+            <td>{{request.Status}}</td>
+            <td>{{request.customer.Rating}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

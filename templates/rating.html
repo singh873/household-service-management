@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rating</title>
+    <link rel="stylesheet" href="/static/rating.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('customer_dashboard') }}" class="btn">Home</a>
+      </nav>
+    </header>
+    <main>
+      <h2>Service Remarks</h2>
+      <form
+        method="POST"
+        action="{{ url_for('submit_remarks', request_id=service_request.Service_Request_Id) }}"
+      >
+        <div class="card">
+          <div class="card-header">Professional Details</div>
+          <div class="card-body">
+            <div>
+              <span class="label">Service ID:</span>
+              <span class="value">{{service_request.Service_Request_Id}}</span>
+            </div>
+            <div>
+              <span class="label">Name:</span>
+              <span class="value"
+                >{{service_request.professional.Full_name}}</span
+              >
+            </div>
+            <div>
+              <span class="label">Pincode:</span>
+              <span class="value"
+                >{{service_request.professional.Pin_code}}</span
+              >
+            </div>
+            <div>
+              <span class="label">Email:</span>
+              <span class="value">{{service_request.professional.Email}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Rating:</label>
+          <div class="rating-group">
+            <input type="radio" name="rating" value="1" id="star1" />
+            <label for="star1">★</label>
+            <input type="radio" name="rating" value="2" id="star2" />
+            <label for="star2">★★</label>
+            <input type="radio" name="rating" value="3" id="star3" />
+            <label for="star3">★★★</label>
+            <input type="radio" name="rating" value="4" id="star4" />
+            <label for="star4">★★★★</label>
+            <input type="radio" name="rating" value="5" id="star5" />
+            <label for="star5">★★★★★</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Remarks (if any):</label>
+          <textarea
+            name="remarks"
+            placeholder="Enter your remarks here"
+          ></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Submit</button>
+          <a href="{{ url_for('customer_dashboard') }}" class="btn secondary"
+            >Cancel</a
+          >
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

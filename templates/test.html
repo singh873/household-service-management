@@ -1,0 +1,68 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Service Name</th>
+    <th>Service Detail</th>
+    <th>Price</th>
+    <th>Professional Name</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  {% for service in services %} {% for professional in service.Professsionals %}
+  <tr>
+    <td>{{ service.Service_Id }}</td>
+    <td>{{ service.Name_of_service }}</td>
+    <td>{{ service.Description }}</td>
+    <td>{{ service.Price }}</td>
+    <td>{{ service.Professionals.Full_name }}</td>
+    <td>{{ request.Status }}</td>
+    <td>
+      {% if request.Status == 'Requested' %}
+      <a
+        href="{{ url_for('cancel_request', request_id=request.Service_Request_Id) }}"
+        >Cancel</a
+      >
+      {% elif request.Status == 'completed' %}
+      <a
+        href="{{ url_for('rate_request', request_id=request.Service_Request_Id) }}"
+        >Rate</a
+      >
+      {% else %} - {% endif %}
+    </td>
+  </tr>
+  {% endfor %} {% endfor %}
+</table>
+
+<!-- dropdown search -->
+
+<div class="nav-right">
+  <form
+    method="POST"
+    action="{{ url_for('admin_dashboard') }}"
+    id="dropdown-form"
+  >
+    <label for="dropdown">Search by:</label>
+    <select
+      id="dropdown"
+      name="search"
+      onchange="document.getElementById('dropdown-form').submit();"
+    >
+      <option value="">Select an option</option>
+      <option value="Service">Service</option>
+      <option value="Customer">Customer</option>
+      <option value="Professional">Professional</option>
+    </select>
+  </form>
+
+  <a href="#">Search2</a>
+</div>
+
+@app.route('/professional_dashboard_summary/<int:professional_id
+  >', methods=['GET', 'POST']) def
+  professional_dashboard_summary(professional_id):
+</int:professional_id>
+
+@app.route('/professional_dashboard_search/<int:professional_id
+  >', methods=['GET', 'POST']) def
+  professional_dashboard_search(professional_id):</int:professional_id
+>

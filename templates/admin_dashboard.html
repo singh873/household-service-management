@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/admin_dashboard.css" />
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <div class="nav-left">
+        <a href="{{url_for('admin_dashboard')}}">Home</a>
+        <a href="{{url_for('search')}}">Search</a>
+        <a href="{{url_for('generate_rating_graph')}}">Summary</a>
+        <a href="{{url_for('login')}}">Logout</a>
+      </div>
+      
+    </nav>
+  
+    <section>
+      <h2>Services</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Base Price</th>
+          <th>Action</th>
+        </tr>
+        {% for service in services %}
+        <tr>
+          <td>
+            <a
+              href="{{url_for('service_details',service_id=service.Service_Id)}}"
+              >{{ service.Service_Id }}</a
+            >
+          </td>
+          <td>{{ service.Name_of_service }}</td>
+          <td>{{service.Description}}</td>
+          <td>{{ service.Price }}</td>
+          <td>
+            <a
+              href="{{ url_for('edit_service', service_id=service.Service_Id)}}"
+              >Edit</a
+            >
+            |
+            <a
+              href="{{ url_for('delete_service', service_id=service.Service_Id)}}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="{{ url_for('add_service') }}">+ New Service</a>
+    </section>
+    <section>
+      <h2>Professionals</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Experience (Yrs)</th>
+          <th>Service Name</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        {% for user in Users %}
+        <tr>
+          <td><a href="{{url_for('professional_details',user_id=user.User_Id)}}">{{ user.User_Id}}</td>
+          <td>{{ user.Full_name}}</td>
+          <td>{{ user.Experience }}</td>
+          <td>{{ user.service.Name_of_service }}</td>
+          <td>{{ user.Status }}</td>
+          <td>
+            {% if user.Status == 'Active' %}
+            <a href="{{ url_for('block_user', user_id=user.User_Id)}}">Block</a>
+            {% else %}
+            <a href="{{ url_for('unblock_user', user_id=user.User_Id)}}"
+              >Unblock</a
+            >
+            {% endif %} |
+            <a href="{{url_for('delete_users',user_id=user.User_Id)}}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+    <section>
+      <h2>Customers</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Pin_code</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+          <td><a href="{{url_for('customer_details',user_id=customer.User_Id)}}">{{ customer.User_Id}}</td>
+          <td>{{ customer.Full_name}}</td>
+          <td>{{ customer.Pin_code}}</td>
+          <td>{{ customer.Address }}</td>
+          <td>{{ customer.Status }}</td>
+          <td>
+            {% if customer.Status == 'Active' %}
+            <a href="{{ url_for('block_user', user_id=customer.User_Id)}}"
+              >Block</a
+            >
+            {% else %}
+            <a href="{{ url_for('unblock_user', user_id=customer.User_Id)}}"
+              >Unblock</a
+            >
+            {% endif %} |
+            <a href="{{url_for('delete_users',user_id=customer.User_Id)}}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+
+    <section>
+      <h2>Service Requests</h2>
+      <table>
+        <tr>
+          <th>Request ID</th>
+          <th>Professional ID</th>
+          <th>Customer ID</th>
+          <th>Requested Date</th>
+          <th>Status</th>
+          <th>Rating</th>
+        </tr>
+        {% for request in Service_Requests %}
+        <tr>
+          <td>{{ request.Service_Request_Id }}</td>
+          <td>{{ request.Professional_id }}</td>
+          <td>{{ request.Customer_id }}</td>
+          <td>{{ request.Requested_date }}</td>
+          <td>{{ request.Status }}</td>
+          <th>{{ request.Rating }}</th>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+    <section>
+      <h2>Pending Approvals</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+        {% for user in pending_users %}
+        <tr>
+          <td>{{ user.User_Id }}</td>
+          <td>{{ user.Full_name }}</td>
+          <td>{{ user.Email }}</td>
+          <td>{{ user.Role }}</td>
+          <td>
+            <a href="{{ url_for('approve_user', user_id=user.User_Id) }}"
+              >Approve</a
+            >
+            |
+            <a href="{{ url_for('reject_user', user_id=user.User_Id) }}"
+              >Reject</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+  </body>
+  
+</html>

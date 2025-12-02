@@ -1,0 +1,95 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header Section */
+header {
+  background-color: #87ceeb;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #ff6347;
+  font-size: 24px;
+}
+
+header nav {
+  margin-top: 10px;
+}
+
+header nav a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+header .profile a {
+  color: #ffa500;
+}
+
+/* Services Section */
+.services-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.services-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+table td {
+  background-color: #fafafa;
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.action-btn.accept {
+  background-color: #4caf50;
+}
+
+.action-btn.reject {
+  background-color: #ff6347;
+}

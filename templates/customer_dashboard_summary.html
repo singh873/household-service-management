@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Request Distribution</title>
+
+    <link rel="stylesheet" href="/static/customer_dashboard_summary.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('customer_dashboard') }}">Home</a></li>
+          <li>
+            <a href="{{ url_for('customer_dashboard_search') }}">Search</a>
+          </li>
+          <li><a href="{{ url_for('login') }}">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="chart-container">
+      <h1>Service Request Distribution</h1>
+      <img
+        src="{{ url_for('static', filename='images/service_name_summary.png') }}"
+        alt="Pie Chart"
+      />
+    </div>
+  </body>
+</html>

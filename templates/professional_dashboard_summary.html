@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/professional_dashboard_summary.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="{{url_for('professional_dashboard')}}">Home</a> |
+      <a
+        href="{{url_for('professional_dashboard_search',professional_id=user.User_Id)}}"
+        >Search</a
+      >
+      |
+      <a
+        href="{{url_for('professional_dashboard_summary',professional_id=user.User_Id)}}"
+        >Summary</a
+      >
+      |
+      <a href="{{url_for('login')}}">Logout</a>
+    </nav>
+
+    <section>
+      <h2>Service Requests Status</h2>
+      <img
+        src="{{ url_for('static', filename=status_image) }}"
+        alt="Service Requests Status Chart"
+      />
+    </section>
+
+    <section>
+      <h2>Service Ratings</h2>
+      <img
+        src="{{ url_for('static', filename=ratings_image) }}"
+        alt="Service Ratings Chart"
+      />
+    </section>
+  </body>
+</html>

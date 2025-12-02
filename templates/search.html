@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link rel="stylesheet" href="/static/search.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="{{url_for('admin_dashboard')}}">Home</a>
+        <a href="#">Summary</a>
+        <a href="{{url_for('login')}}">Logout</a>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Search</h1>
+      <form method="POST" action="{{ url_for('search') }}">
+        <label for="search_type">Search By:</label>
+        <select id="search_type" name="search_type" required>
+          <option value="" disabled selected>Select Type</option>
+          <option value="service">Service</option>
+          <option value="professional">Professional</option>
+          <option value="customer">Customer</option>
+        </select>
+
+        <label for="query">Enter Query:</label>
+        <input
+          type="text"
+          id="query"
+          name="query"
+          placeholder="Name, Pin code, or Address"
+          required
+        />
+
+        <button type="submit">Search</button>
+      </form>
+
+      {% if results %}
+      <h2>Search Results</h2>
+      {% if search_type == "service" %}
+      <table>
+        <tr>
+          <th>Service ID</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Base Price</th>
+        </tr>
+        {% for service in results %}
+        <tr>
+          <td>{{ service.Service_Id }}</td>
+          <td>{{ service.Name_of_service }}</td>
+          <td>{{ service.Description }}</td>
+          <td>{{ service.Price }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% elif search_type == "professional" %}
+      <table>
+        <tr>
+          <th>Professional ID</th>
+          <th>Name</th>
+          <th>Service Name</th>
+          <th>Experience (Yrs)</th>
+          <th>Address</th>
+          <th>Pin Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        {% for professional in results %}
+        <tr>
+          <td>{{ professional.User_Id }}</td>
+          <td>{{ professional.Full_name }}</td>
+          <td>{{ professional.service.Name_of_service }}</td>
+          <td>{{ professional.Experience }}</td>
+          <td>{{ professional.Address }}</td>
+          <td>{{ professional.Pin_code }}</td>
+          <td>{{ professional.Status }}</td>
+          <td>
+            {% if professional.Status == 'Active' %}
+            <a href="{{ url_for('block_user', user_id=professional.User_Id )}}"
+              >Block</a
+            >
+            {% else %}
+            <a
+              href="{{ url_for('unblock_user', user_id=professional.User_Id )}}"
+              >Unblock</a
+            >
+            {% endif %} |
+            <a href="{{url_for('delete_users',user_id=professional.User_Id )}}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% elif search_type == "customer" %}
+      <table>
+        <tr>
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Pin Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        {% for customer in results %}
+        <tr>
+          <td>{{ customer.User_Id }}</td>
+          <td>{{ customer.Full_name }}</td>
+          <td>{{ customer.Address }}</td>
+          <td>{{ customer.Pin_code }}</td>
+          <td>{{ customer.Status }}</td>
+
+          <td>
+            {% if customer.Status == 'Active' %}
+            <a href="{{ url_for('block_user', user_id=customer.User_Id )}}"
+              >Block</a
+            >
+            {% else %}
+            <a href="{{ url_for('unblock_user', user_id=customer.User_Id )}}"
+              >Unblock</a
+            >
+            {% endif %} |
+            <a href="{{url_for('delete_users',user_id=customer.User_Id )}}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %} {% else %}
+      <p>No results found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

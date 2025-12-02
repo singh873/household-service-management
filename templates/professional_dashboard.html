@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Dashboard</title>
+    <link rel="stylesheet" href="/static/professional_dashboard.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <h1>Welcome {{user.Full_name}}</h1>
+      <nav>
+        <a href="{{url_for('professional_dashboard')}}">Home</a> |
+        <a
+          href="{{url_for('professional_dashboard_search',professional_id=user.User_Id)}}"
+          >Search</a
+        >
+        |
+        <a
+          href="{{url_for('professional_dashboard_summary',professional_id=user.User_Id)}}"
+          >Summary</a
+        >
+        |
+        <a href="{{url_for('login')}}">Logout</a>
+        <span class="profile"
+          ><a
+            href="{{url_for('professional_edit_profile',user_id=user.User_Id)}}"
+            >Edit Profile</a
+          ></span
+        >
+      </nav>
+    </header>
+
+    <!-- Today Services Section -->
+    <section class="services-section">
+      <h2>Service Requests</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service Request ID</th>
+            <th>Customer ID</th>
+            <th>Requested Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for request in requests %} {% if request.Status == 'Requested' or
+          request.Status == 'Accepted' %}
+
+          <tr>
+            <td>{{ request.Service_Request_Id }}</td>
+            <td>{{ request.customer.User_Id }}</td>
+            <td>{{ request.Requested_date }}</td>
+            <td>{{ request.Status }}</td>
+            <td>
+              {% if request.Status not in ['Accepted', 'Rejected'] %}
+              <button class="action-btn accept">
+                <a
+                  href="{{ url_for('accept_request', request_id=request.Service_Request_Id) }}"
+                  >Accept</a
+                >
+              </button>
+              <button class="action-btn reject">
+                <a
+                  href="{{ url_for('reject_request', request_id=request.Service_Request_Id) }}"
+                  >Reject</a
+                >
+              </button>
+              {% else %} None {% endif %}
+            </td>
+          </tr>
+          {% endif %} {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Closed Services Section -->
+    <section class="services-section">
+      <h2>Closed Services</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service Request ID</th>
+            <th>Customer ID</th>
+            <th>Requested Date</th>
+            <th>Status</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for request in requests %} {% if request.Status == 'Completed' or
+          request.Status == 'Rejected' %}
+          <tr>
+            <td>{{ request.Service_Request_Id }}</td>
+            <td>{{ request.customer.User_Id }}</td>
+            <td>{{ request.Requested_date }}</td>
+            <td>{{ request.Status }}</td>
+            <td>{{ request.Rating }}</td>
+          </tr>
+          {% endif %} {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>

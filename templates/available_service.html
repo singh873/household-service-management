@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Services</title>
+    <link rel="stylesheet" href="/static/available_service.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <nav>
+        <a href="{{url_for('customer_dashboard')}}">Home</a> |
+        <a href="{{url_for('customer_dashboard_search')}}">Search</a> |
+        <a href="#">Summary</a> |
+        <a href="{{url_for('login')}}">Logout</a>
+      </nav>
+    </header>
+    <div class="container">
+      <!-- Home Button -->
+      <h1 class="page-title">Available Services</h1>
+      <div class="nav">
+      <table class="services-table">
+        <thead>
+          <tr>
+            <th>Service ID</th>
+            <th>Service Name</th>
+            <th>Description</th>
+            <th>Professional Name</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Book</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for service in services %} {% for professional in
+          service.Professionals %}
+          <tr>
+            <td>{{ service.Service_Id }}</td>
+            <td>{{ service.Name_of_service }}</td>
+            <td>{{ service.Description }}</td>
+            <td>{{ professional.Full_name }}</td>
+            <td>{{ professional.Address }}</td>
+            <td>{{ professional.Pin_code }}</td>
+            <td>{{ service.Price }}</td>
+            <td>{{ professional.Rating }}</td>
+            <td>
+              <form
+                action="{{ url_for('request_professional',service_id=service.Service_Id,professional_id=professional.User_Id) }}"
+                method="POST"
+              >
+                <button type="submit">Place Request</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %} {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

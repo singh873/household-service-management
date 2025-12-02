@@ -1,0 +1,148 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: #555;
+}
+
+/* Form */
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+form input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Sections */
+section {
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+h2,
+h3 {
+  border-bottom: 2px solid #007bff;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+}
+
+ul li:hover {
+  background: #e9ecef;
+}
+
+/* Empty Results */
+p {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* Table Styling (Optional) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+nav {
+  display: flex; /* Enable flexbox */
+  justify-content: space-between; /* Space between left and right sections */
+  background-color: #0056b3; /* Dark Blue */
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+}
+
+.nav-left a,
+.nav-right a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+}
